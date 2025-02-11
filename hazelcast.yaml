@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hazelcast
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hazelcast
+  template:
+    metadata:
+      labels:
+        app: hazelcast
+    spec:
+      containers:
+        - name: hazelcast
+          image: hazelcast/hazelcast:latest
+          ports:
+            - containerPort: 5701
+          env:
+            - name: HAZELCAST_KUBERNETES_SERVICE_NAME
+              value: "hazelcast-service"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hazelcast-service
+spec:
+  selector:
+    app: hazelcast
+  ports:
+    - protocol: TCP
+      port: 5701
+      targetPort: 5701
+  clusterIP: None # Headless service for Hazelcast discovery

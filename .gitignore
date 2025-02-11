@@ -1,0 +1,12 @@
+api-service/build
+api-service/.gradle
+api-service/.idea
+api-service/.DS_Store
+worker-service/build
+worker-service/.gradle
+worker-service/.idea/
+worker-service/.DS_Store
+/.idea
+.idea/
+.DS_Store
+**/.DS_Store
