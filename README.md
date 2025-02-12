@@ -54,6 +54,14 @@ you can see that the command will tell you what __PORT__ it uses. Copy this port
 
 ## Operation
 Once the setup is complete and the service is exposed on a PORT, try to follow the pods in different terminal windows with `stern`.
+```
+stern api-service
+stern worker-service
+```
+
+Or just check the logs of the pods after each request if you dont want to install stern
+`kubectl logs api-service`
+
 Then try sending a POST request to the endpoints exposed by the `api-service` using the __PORT__ you retrieved earlier.
 
 Replace PORTHERE with the actual port
